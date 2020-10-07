@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+
 export const StarRating = (props) => {
   return (
     <div style={{ display: "flex" }}>

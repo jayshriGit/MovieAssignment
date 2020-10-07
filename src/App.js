@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { TopMovies } from "./top-movies";
+import { TopMovies } from "./components/top-movies";
 
 function App() {
   return (

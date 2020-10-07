@@ -1,4 +1,4 @@
-export const tempData = {
+export const mockMoviesDetails = {
   items: [
     {
       id: "tt0111161",

@@ -25,6 +25,7 @@ export class ShowMovies extends React.Component {
       })
       .catch((error) => this.setState({ error, isLoading: false }));
   }
+  
   processData = (prom) => {
     const details = this.state.movieDetails;
     prom.then((data) => {
@@ -92,7 +93,6 @@ export class ShowMovies extends React.Component {
                   height="200"
                   // width={isMobileView ? "200" : "300"}
                 />
-                {isMobileView}
                 <p>Rating Count-{ratingCount}K</p>
               </div>
             </div>
