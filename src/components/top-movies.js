@@ -15,11 +15,12 @@ export class TopMovies extends React.Component {
   }
 
   fetchmovies() {
-    fetch(`https://imdb-api.com/en/API/Top250Movies/k_07mgtpAz`)
+    fetch(`https://imdb-api.com/en/API/Top250Movies/k_7vlcbbzx`)
       .then((response) => response.json())
       .then((data) => {
         if (data.items) {
           this.setState({
+            ...this.state,
             movies: data.items,
             isLoading: false,
             totalNoOfPages: data.items.length
@@ -74,28 +75,29 @@ export class TopMovies extends React.Component {
         <div>
           {!isLoading ? (
             <div>
+              {/* Mobile view
               {screenSize <= 700 ? (
                 <ShowMovies movies={movies} isMobileView={true} />
-              ) : (
-                <div>
-                  <ShowMovies movies={perPageMovies} isMobileView={false} />
-                  <div className="page-button">
-                    {pageNo > 1 ? (
-                      <button onClick={this.loadPrevPage.bind(this)}>
-                        PREV
-                      </button>
-                    ) : null}
-                    {pageNo < totalNoOfPages ? (
-                      <button onClick={this.loadNextPage.bind(this)}>
-                        NEXT
-                      </button>
-                    ) : null}
-                  </div>
+              ) : ( */}
+              <div>
+                {/* Web View */}
+                <ShowMovies
+                  movies={perPageMovies}
+                  isMobileView={screenSize <= 700 ? true : false}
+                  pageNumber={pageNo}
+                />
+                <div className="page-button">
+                  {pageNo > 1 ? (
+                    <button onClick={this.loadPrevPage.bind(this)}>PREV</button>
+                  ) : null}
+                  {pageNo < totalNoOfPages ? (
+                    <button onClick={this.loadNextPage.bind(this)}>NEXT</button>
+                  ) : null}
                 </div>
-              )}
+              </div>
             </div>
           ) : (
-            <h4>...loading</h4>
+            <h4>...loading movie details</h4>
           )}
         </div>
       </React.Fragment>
